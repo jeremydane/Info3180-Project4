@@ -1,0 +1,19 @@
+<!doctype html>
+<!--<html manifest="manifest.appcache">-->
+<html>
+  <body>
+    <title>Card  Game</title>
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
+	<ul>
+	<!--<li><a href="default.asp">Home</a></li>-->
+	<li><a href="Cards.html"> - Home - </a></li>
+	<li><a href="contact.asp">  - Leader Board -  </a></li>
+	<li><a href="about.html"> - About - </a></li>
+	</ul>
+		
+ </body>
+</html>
+

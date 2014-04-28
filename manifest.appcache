@@ -5,10 +5,13 @@ CACHE MANIFEST
 CACHE:
 static/cards.js
 static/jquery.min.js
+static/networkPlay.js
 #http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 
 # html files
 cards.html
+about.html
+leaderBoard.html
 
 # css files
 static/cards.css

@@ -1,6 +1,7 @@
 window.onload=function()
 {
 	$('#player').hide();
+	var MOVES=24;
 
 	var createDeck = function() 
 	{
@@ -115,23 +116,66 @@ window.onload=function()
 
 	var prelim = function()
 	{
-		num=players();
-		//username=document.getElementById("player").elements["username"];
-		if (num==2)
-		{	
-			players=duo();
-		}
-		else
-		{
-			players=solo();
-		}
-			
-		$('#start').hide();
 		
-		$('#deck').show();
-		document.getElementById('sign').innerHTML =player;
-		$('#start').show();
-		startGame();
+		//username=document.getElementById("player").elements["username"];
+
+  //    var chatbutton = document.getElementById("newchat");
+  //   	var namebox = document.getElementById("name");
+  //   	chatbutton.addEventListener("click", function(event) {
+  //        	event.preventDefault();
+  //        	name = namebox.value;
+  //        	window.location.href = chatbutton.href + "/" + name;
+  //        	sessionStorage.removeItem("otheruser");
+  		//mode=0;
+		
+		
+		if ( document.getElementById('myRadioId1').checked ) 
+		{
+
+			//mode = 1;
+			solo();
+			
+		}
+		if ( document.getElementById('myRadioId2').checked ) 
+		{
+
+			//mode = 2;
+			duo(4);
+		}
+		if ( document.getElementById('myRadioId3').checked ) 
+		{
+
+			//mode = 3;
+			duo(5);
+		}
+
+		
+		//alert(player);
+		
+		// if (mode==1)
+		// {
+		// 	players=solo();
+		// }
+		// else
+		// {
+
+		// 	if (mode==2)
+		// 	{
+		// 		players=duo(4);
+		// 	}
+		// 	if (mode==3)
+		// 	{
+		// 		players=duo(5);
+		// 	}
+		
+		// }
+			
+		// $('#start').hide();
+		
+		// $('#deck').show();
+		// document.getElementById('sign').innerHTML =player;
+		// $('#start').show();
+		//startGame();
 	}
 
 	
@@ -190,12 +234,13 @@ window.onload=function()
 	var players=function()
 	{
 		
-		document.getElementById('multi').onclick=prelim;
-		return 2;
+		//document.getElementById('multi').onclick=prelim;
+		//document.getElementById('start').onclick=prelim;
+		//return 2;
 		
 		
 	}
-	var duo=function()
+	var duo=function(type)
 	{
 		
 		p1 = window.prompt('Player1:'); 
@@ -205,7 +250,15 @@ window.onload=function()
 		localStorage["player2"]= p2.toString();
 
 		players=[p1,p2];
-		return 	players	
+
+		//return 	players	
+		$('#start').hide();
+		
+		$('#deck').show();
+		document.getElementById('sign').innerHTML =player;
+		startGame(2);
+		$('#start').show();
+		return type;
 	}
 	var solo=function()
 	{
@@ -213,10 +266,59 @@ window.onload=function()
 		localStorage["player1"]= p1.toString();
 		
 		player=[p1];
-		return player;		
+		//return player;
+		$('#start').hide();
+		
+		$('#deck').show();
+		document.getElementById('sign').innerHTML =player;
+		startGame(1);
+		$('#start').show();		
+	}
+
+
+	
+	function gameMode()
+	{
+		var radio1 = document.createElement('input');
+		radio1.id = 'myRadioId1';
+		radio1.type = 'radio';
+		radio1.name = 'radioGroup';
+		radio1.value = 'someValue1';
+
+		var radio2 = document.createElement('input');
+		radio2.id = 'myRadioId2';
+		radio2.type = 'radio';
+		radio2.name = 'radioGroup';
+		radio2.value = 'someValue2';
+
+		var radio3 = document.createElement('input');
+		radio3.id = 'myRadioId3';
+		radio3.type = 'radio';
+		radio3.name = 'radioGroup';
+		radio3.value = 'someValue3';
+
+		var label1 = document.createElement('label');
+		label1.htmlFor = radio1.id;
+		label1.innerHTML = 'single player';
+
+		var label2 = document.createElement('label');
+		label2.htmlFor = radio2.id;
+		label2.innerHTML = 'two player';
+
+		var label3 = document.createElement('label');
+		label3.htmlFor = radio3.id;
+		label3.innerHTML = 'two player network play';
+
+		var container = document.getElementById('mode');
+		container.appendChild(radio1);
+		container.appendChild(label1);
+		container.appendChild(radio2);
+		container.appendChild(label2);
+		container.appendChild(radio3);
+		container.appendChild(label3);
 	}
 	
-	var startGame = function()
+	var startGame = function(type)
 	{	
 			
 		gameScreen();
@@ -229,7 +331,10 @@ window.onload=function()
 		var stk=[];
 
 		$('#start').hide();
-		cardClick(clk, stk);
+		for (i=0; i<type; i++)
+		{
+			cardClick(clk, stk);
+		}
 		
 			
 		
@@ -249,7 +354,7 @@ window.onload=function()
 			
 			turns= Math.floor(clk/2);
 			console.log(turns);
-			if (turns<=24)
+			if (turns<=MOVES)
 			{
 				localStorage["turns"]= turns.toString() ;
 			
@@ -263,7 +368,7 @@ window.onload=function()
 				turns=0;
 				alert("GAMEOVER");
 				$('#start').hide();
-				startGame();
+				prelim();
 			}
 			
 			
@@ -355,7 +460,22 @@ window.onload=function()
 	showDeck(deck);
 	$('#save').hide();	
 	
-	document.getElementById('start').onclick=prelim;
+	//document.getElementById('multi').onclick=prelim;
+	//document.getElementById('start').onclick=prelim;
+
+	$('#start').click(function()
+	{
+		$('#multi').hide();
+		solo();
+	});
+	$('#multi').click(function()
+	{
+		
+		//$('#start').hide();
+		gameMode();
+		
+		prelim();
+	});
 	//event.preventDefault();
 	document.getElementById('save').onclick=saveGame;
 	

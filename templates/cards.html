@@ -1,13 +1,24 @@
 <!doctype html>
-<!--<html manifest="manifest.appcache">-->
-<html>
+<html manifest="manifest.appcache">
   <body>
     <title>Card  Game</title>
+    <script type="text/javascript" src="/_ah/channel/jsapi"></script>
     	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='networkPlay.js') }}"></script>
 	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
+	<frameset>
+	<ul>
+	<!--<li><a href="default.asp">Home</a></li>-->
+	<li><a href="Cards"> - Home - </a></li>
+	<li><a href="leaderBoard">  - Leader Board -  </a></li>
+	<li><a href="about"> - About - </a></li>
+	</ul>
+	</frameset>
 	<img id="JDF" src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="94" height="118">
+
 	
 	<audio id="flipsound">
   		<source src="{{ url_for('static', filename='flip.ogg') }}" type="audio/ogg">
@@ -19,7 +30,7 @@
   		<source src="{{ url_for('static', filename='chime.mp3') }}" type="audio/mpeg">		
 		Your browser does not support the audio element.
 	</audio>
-	<div id="sign">Sign In</div>
+	<div id="sign"><a href="login.html">Sign In</a></div>
 		<!--<form action="{{ url_for('login') }}" method=get>-->
 		<form id="player" action="" method=get>
 			<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
@@ -30,8 +41,9 @@
 	<p><h2 id="heading">JDF Card Game</h2></p>
 	<hr>
 	<div id="multi">
-		<div class="save">Multiplayer</div>			
+		<div class="save">Game mode</div>			
 	</div>
+	<div id="mode"></div>
 	<div id="start">			
 		<div class="start">Start</div>			
 	</div><br>

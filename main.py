@@ -17,6 +17,17 @@ app = Flask(__name__.split('.')[0])
 def hello(name=None):
     return render_template('cards.html', name=name)
 
+@app.route('/leaderBoard')
+@app.route('/<name>')
+def leader(name=None):
+    return render_template('leaderBoard.html', name=name)
+
+
+@app.route('/about')
+@app.route('/<name>')
+def about(name=None):
+    return render_template('about.html', name=name)
+
 
 @app.route('/login')#, methods=['POST', 'GET'])
 @app.route('/login/<name>')
@@ -26,7 +37,7 @@ def login():
     #flash('You were logged in')
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return render_template('cards.html', error=error)
+    return render_template('login.html', error=error)
 
 def logout():
     # remove the username from the session if it's there
