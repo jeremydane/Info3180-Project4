@@ -3,17 +3,34 @@ html, body
   min-height: 100%;
 }
 
-body
-{
-  position: relative;
-}
 
+body 
+{ 
+	margin: 50px;
+	text-align: center; 
+	background: #005a2c;
+	position: relative;
+}
 #login
 {
  	float:right;
  	width:250px;
 	height: 250px;
 	top: 400;	
+}
+
+#cardsPic
+{
+	margin: 4px;
+	float:right;
+	position: relative;
+	overflow:hidden;
+	top: 230px;
+}
+#go
+{
+	top: 150px;
+
 }
 .overlay
 {
@@ -28,7 +45,8 @@ body
 
 li
 {
-display:inline;
+	display:inline;
+	margin: 2px;
 }
 
 #deck
@@ -86,6 +104,14 @@ display:inline;
 	height: 80px;
 }
 
+#turns
+{
+	position: relative;
+	float:right;
+	bottom: 60px;	
+	margin: 10px;
+
+}
 
 
 .flip 
@@ -97,7 +123,7 @@ display:inline;
 	margin: 4px;
 	float:left;
 	left:20px;
-	position: relative;
+	
 }
 
 .flip .card.flipped 
@@ -140,13 +166,7 @@ display:inline;
 
 }
 
-body 
-{ 
-	margin: 50px;
-	text-align: center; 
-	background: #00a651;
 
-}
 
 .front
 { 
@@ -222,64 +242,6 @@ body
   text-align: center;
   font: 100px/220px Georgia, Times New Roman, serif;
 }
-
-/** layout & transform */
-
-
-/*.card
-{
-    position: relative;
-    -webkit-perspective: 100;
-    overflow: hidden;
-}
-
-.back
-{
-    -webkit-transform-style: preserve- 3 d;
-    -webkit-backface-visibility: hidden;
-    -webkit-transition: all ease-in-out 0.5s;
-    z-index: 800;
-}
-
-.front 
-{
-    position: absolute; top: 0; left: 0;
-    z-index: 800;
-    
-    -webkit-transform: rotatey(-180deg);
-    -webkit-transform-style: preserve- 3 d;
-    -webkit-backface-visibility: hidden;
-    -webkit-transition: all ease-in-out 0.5s;
-    opacity: 0;
-}
-
-.card .back
-{
-    z-index: 900;
-    -webkit-transform: rotatey(180deg);
-    opacity: 1;
-}
-
-.card .front 
-{
-    z-index: 1000;
-    -webkit-transform: rotatey(0deg);
-    opacity: 0;
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

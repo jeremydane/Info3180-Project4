@@ -56,8 +56,6 @@ window.onload=function()
 	  return this.cards	
 	}
 
-
-
 	var showCards = function(cardJSON) 
 	{	
 		var sym
@@ -100,105 +98,82 @@ window.onload=function()
 		console.log(card);			
 	}
 
-
-	
 	var showDeck = function(deck)
 	{
 	    var idx;
 	    for (idx = 0; idx < deck.length; ++idx)
 	   {
-		    //console.log("Creating your deck....",deck[idx]);
+		    console.log("Creating your deck....",deck[idx]);
 		    showCards(deck[idx]);		    
 	    }
 	}
 
-
-
 	var prelim = function()
 	{
 		
-		//username=document.getElementById("player").elements["username"];
-
-  //    var chatbutton = document.getElementById("newchat");
-  //   	var namebox = document.getElementById("name");
-  //   	chatbutton.addEventListener("click", function(event) {
-  //        	event.preventDefault();
-  //        	name = namebox.value;
-  //        	window.location.href = chatbutton.href + "/" + name;
-  //        	sessionStorage.removeItem("otheruser");
-  		//mode=0;
-		
-		
+   		mode=0;
+				
 		if ( document.getElementById('myRadioId1').checked ) 
 		{
-
-			//mode = 1;
-			solo();
-			
+			mode = 1;
+			//solo();		
 		}
 		if ( document.getElementById('myRadioId2').checked ) 
 		{
-
-			//mode = 2;
-			duo(4);
+			mode = 2;
+			//duo(4);
 		}
 		if ( document.getElementById('myRadioId3').checked ) 
 		{
-
-			//mode = 3;
-			duo(5);
+			mode = 3;
+			//duo(5);
 		}
 
 		
-		//alert(player);
-		
-		// if (mode==1)
-		// {
-		// 	players=solo();
-		// }
-		// else
-		// {
+		if (mode==1)
+		{
+		 	players=solo();
+		}
+		else
+		{
+			alert("2 players");
 
-		// 	if (mode==2)
-		// 	{
-		// 		players=duo(4);
-		// 	}
-		// 	if (mode==3)
-		// 	{
-		// 		players=duo(5);
-		// 	}
+		 	if (mode==2)
+			{
+		 		players=duo(4);
+		 	}
+			if (mode==3)
+		 	{
+		 		players=duo(5);
+		 	}
 		
-		// }
+		}
 			
-		// $('#start').hide();
+		$('#start').hide();
 		
-		// $('#deck').show();
-		// document.getElementById('sign').innerHTML =player;
-		// $('#start').show();
-		//startGame();
+		$('#deck').show();
+		document.getElementById('sign').innerHTML =player;
+		$('#start').show();
+		startGame();
 	}
 
 	
 
 	var gameScreen = function()
 	{
-		var go= document.getElementById('go');
-		
+		var go= document.getElementById('go');		
 		go.parentNode.removeChild(go);
 
 		var head= document.getElementById('heading');
 		head.parentNode.removeChild(heading);
 		
 		var start= document.getElementById('start');
-		//start.parentNode.removeChild(start);
 		start.style.cssFloat="right";
 		start.style.fontSize='5px';
 
 		var JDF= document.getElementById('JDF');
 		JDF.parentNode.removeChild(JDF);
 		
-		//$("#save").find('.start').addClass('save')
-	
 	}
 	
 	var arrangeCards = function()
@@ -231,23 +206,15 @@ window.onload=function()
 		}
 	}
 	
-	var players=function()
-	{
-		
-		//document.getElementById('multi').onclick=prelim;
-		//document.getElementById('start').onclick=prelim;
-		//return 2;
-		
-		
-	}
 	var duo=function(type)
 	{
 		
 		p1 = window.prompt('Player1:'); 
-		localStorage["player1"]= p1.toString();
+		//localStorage["player1"]= p1.toString();
+		localStorage["player1"]= p1;
 		
 		p2 = window.prompt('Player2:');
-		localStorage["player2"]= p2.toString();
+		localStorage["player2"]= p2;
 
 		players=[p1,p2];
 
@@ -263,7 +230,7 @@ window.onload=function()
 	var solo=function()
 	{
 		p1 = window.prompt('Player1:'); 
-		localStorage["player1"]= p1.toString();
+		localStorage["player1"]= p1;
 		
 		player=[p1];
 		//return player;
@@ -272,7 +239,8 @@ window.onload=function()
 		$('#deck').show();
 		document.getElementById('sign').innerHTML =player;
 		startGame(1);
-		$('#start').show();		
+		$('#start').show();	
+		return 0;	
 	}
 
 
@@ -325,18 +293,16 @@ window.onload=function()
 		
 		arrangeCards();
 		$('#save').show();
+		$('#cardsPic').hide();
 		
 		var play=true;
 		var clk=0;
 		var stk=[];
 
 		$('#start').hide();
-		for (i=0; i<type; i++)
-		{
-			cardClick(clk, stk);
-		}
-		
-			
+				
+		cardClick(clk, stk);
+
 		
 	}
         
@@ -358,7 +324,7 @@ window.onload=function()
 			{
 				localStorage["turns"]= turns.toString() ;
 			
-				document.getElementById('turns').innerHTML =turns;
+				document.getElementById('turnValue').innerHTML =turns;
 			
 	    			card.addClass('flipped');
 				playing(card, stk);	
