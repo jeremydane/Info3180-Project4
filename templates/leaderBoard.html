@@ -4,7 +4,7 @@
   <body>
     <title>Card  Game</title>
     <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+	<script src="{{ url_for('static', filename='leader.js') }}"></script>
 
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
 	<ul>
@@ -12,6 +12,12 @@
 	<li><a href="Cards.html"> - Home - </a></li>
 	<li><a href="about.html"> - About - </a></li>
 	</ul>
+	<br>
+	<h1>Leader Board</h1>
+	<p>
+		<div id= "leaders>"			
+		</div>
+	</p>
 		
  </body>
 </html>

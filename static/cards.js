@@ -210,7 +210,7 @@ window.onload=function()
 	
 	var duo=function(type)
 	{
-		
+		MOVES=100000;
 		p1 = window.prompt('Player1:'); 
 		//localStorage["player1"]= p1.toString();
 		localStorage["player1"]= p1;
@@ -329,33 +329,20 @@ window.onload=function()
 					
 			cardClick2(clk, stk2);
 		}
-		// if (num=2)
-		// {	
-		// 	gameScreen(num);
-			
-		// 	arrangeCards();
-		// 	$('#save').show();
-		// 	$('#cardsPic').hide();
-			
-		// 	var play=true;
-		// 	var clk=0;
-		// 	var stk1=[];
-		// 	var stk2=[];
-
-		// 	$('#start').hide();
-					
-		// 	cardClick(clk, stk1, stk2);
-		// }
-
+	
 		
 	}
+
+
 	var resume = function()
 	{
 		for(var i in window.localStorage)
 		{
    			val = localStorage.getItem(i); 
    			value = val.split(","); //splitting string inside array to get name
-   			name[i] = value[1]; // getting name from split string
+   			//name[i] = value[1]; // getting name from split string
+
+   			/// need to find name and return the card positions
    			console.log(i);
 		}
 	}
@@ -432,37 +419,7 @@ window.onload=function()
 		
 	}
 
-	// var cardClick = function(clk, stk1, stk2)
-	// {	
-	// 	$('.card').click(function()
-	// 	{
-	// 		p1=localStorage["player1"]
-	// 		p2=localStorage["player2"]
-	// 		for (i=1; i<=2;i++)
-	// 		{
-			
-	// 			var flip=document.getElementById('flipsound');
-	// 			flip.play();
-			
-	// 			clk++;			
-	// 			card=$(this);
-				
-	// 			turns[i]= Math.floor(clk/(2*i));
-
-	// 			console.log(turns[i]);
-
-	// 			localStorage["turns"+i]= turns[i] ;
-				
-	// 			document.getElementById('turnValue').innerHTML =[p1,turns[1]];
-	// 			document.getElementById('turnValue2').innerHTML =[p2,turns[2]];
-				
-	// 	    	card.addClass('flipped');
-	// 			playing(card, stk1, stk2);	
-	// 		}
-
-	// 	});	
-		
-	// }
+	
 
 	var  playing = function(card, stk)
 	{
@@ -516,109 +473,7 @@ window.onload=function()
 		}		
 	}
 
-	// var  playing = function(card, stk1, stk2)
-	// {
-	// 	for (i=1; i<=2;i++)
-	// 	{
-	// 		type=card[0].textContent;
-	// 		//id=card[0].id;
-	// 		e=card;
-	// 		stk1.push({element:e,type:type});
-			
-	// 		faces=[];
-	// 		if (stk1.length>1)
-	// 		{
-	// 			x=stk1[0].type;
-	// 			y=stk1[1].type;
-	// 			faces.push(x);
-	// 			faces.push(y);
-				
-
-	// 			//a=stk[0].id;
-	// 			//b=stk[1].id;
-				
-	// 			if (paired(faces))
-	// 			{					
-										
-	// 				//document.getElementById(a).addClass("matched");
-	// 				//document.getElementById(b).addClass("matched");
-
-	// 				stk1[1].element.addClass("matched");
-	// 				stk1[0].element.addClass("matched");
-
-	// 				var same=document.getElementById('match');
-	// 				same.play();
-					
-	// 				faces.pop();
-	// 				faces.pop();	
-
-	// 			}
-	// 			else
-	// 			{	
-	// 				//document.getElementById("card1").addClass("flip");
-	// 				//document.getElementById("card2").addClass("flip");
-	// 				for (i=0;i<2;i++)
-	// 				{	
-	// 					stk1[i].element.removeClass("flipped");
-						
-	// 				}
-	// 				stk1.pop();
-	// 				stk1.pop();
-	// 			}
-
-	// 		}
-	// 	}
-	// 	for (i=1; i<=2;i++)
-	// 	{
-	// 		type=card[0].textContent;
-	// 		//id=card[0].id;
-	// 		e=card;
-	// 		stk2.push({element:e,type:type});
-			
-	// 		faces=[];
-	// 		if (stk2.length>1)
-	// 		{
-	// 			x=stk2[0].type;
-	// 			y=stk2[1].type;
-	// 			faces.push(x);
-	// 			faces.push(y);
-				
-
-	// 			//a=stk[0].id;
-	// 			//b=stk[1].id;
-				
-	// 			if (paired(faces))
-	// 			{					
-										
-	// 				//document.getElementById(a).addClass("matched");
-	// 				//document.getElementById(b).addClass("matched");
-
-	// 				stk2[1].element.addClass("matched");
-	// 				stk2[0].element.addClass("matched");
-
-	// 				var same=document.getElementById('match');
-	// 				same.play();
-					
-	// 				faces.pop();
-	// 				faces.pop();	
-
-	// 			}
-	// 			else
-	// 			{	
-	// 				//document.getElementById("card1").addClass("flip");
-	// 				//document.getElementById("card2").addClass("flip");
-	// 				for (i=0;i<2;i++)
-	// 				{	
-	// 					stk2[i].element.removeClass("flipped");
-						
-	// 				}
-	// 				stk2.pop();
-	// 				stk2.pop();
-	// 			}
-
-	// 		}
-	// 	}		
-	// }
+	
 
 	var paired = function(stk)
 	{
@@ -661,6 +516,7 @@ window.onload=function()
 	var num=0;			//number of players
 	$('#deck').hide();
 	showDeck(deck);
+	$('#start').hide();
 	$('#save').hide();	
 	
 	//document.getElementById('multi').onclick=prelim;
@@ -688,7 +544,7 @@ window.onload=function()
 		
 		//mode= prelim();
 		$('#multi').hide();
-
+		$('#start').show();
 		$('#start').click(function()
 		{
 			$('#mode').hide();

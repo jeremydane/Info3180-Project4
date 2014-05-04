@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="manifest.appcache">
+<!--<html manifest="manifest.appcache">-->
   <body>
     <title>Card  Game</title>
     <script type="text/javascript" src="/_ah/channel/jsapi"></script>

@@ -30,8 +30,9 @@
   		<source src="{{ url_for('static', filename='chime.mp3') }}" type="audio/mpeg">		
 		Your browser does not support the audio element.
 	</audio>
-	<div id="sign"><a href="login.html">Sign In</a></div>
-		<!--<form action="{{ url_for('login') }}" method=get>-->
+	<div id="sign">
+		<!--<a href="login">Sign In</a>
+		<form action="{{ url_for('login') }}" method=get>-->
 		<form id="player" action="" method=get>
 			<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
 			<!--<p><input type="password" name="password" value="" placeholder="Password"></p>-->
@@ -53,7 +54,9 @@
 	</div><br>
 	
 	<div id="turns" class="turns">	
-		<h3>Turns:</h3> <h4 id="turnValue"></h4> <h4 id="turnValue2"></h4>	
+		<h3>Turns:</h3> 
+		<h4 id="turnValue"></h4> 
+		<h4 id="turnValue2"></h4>	
 				
 	</div>	
 	<div id="go" class="flipper">

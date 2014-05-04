@@ -29,20 +29,27 @@ def about(name=None):
     return render_template('about.html', name=name)
 
 
-@app.route('/login')#, methods=['POST', 'GET'])
-@app.route('/login/<name>')
-def login():
-    error = None
-    session['logged_in'] = True
+@app.route('/login')
+@app.route('/<name>')
+def login(name=None):
+    return render_template('login.html', name=name)
+
+
+#@app.route('/login')#, methods=['POST', 'GET'])
+#@app.route('/login/<name>')
+#@app.route('/<name>')
+#def login(name=None):
+    #error = None
+    #session['logged_in'] = True
     #flash('You were logged in')
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return render_template('login.html', error=error)
+    #return render_template('login.html', name=name)
 
 def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
-    return redirect(url_for('index'))
+    return redirect(url_for('cards'))
 
 @app.errorhandler(404)
 def page_not_found(e):

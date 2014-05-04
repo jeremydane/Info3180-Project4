@@ -6,6 +6,8 @@ CACHE:
 static/cards.js
 static/jquery.min.js
 static/networkPlay.js
+static/leader.js
+
 #http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 
 # html files
